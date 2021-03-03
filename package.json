@@ -2,10 +2,13 @@
   "name": "validori",
   "version": "1.0.0",
   "description": "Idk what this is, but its a validation thing so.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ts-node": "TS_NODE_PROJECT=tsconfig.json ts-node-script ./exp.ts"
+    "clean": "rm -rf coverage; rm -rf .nyc_output; rm -rf dist",
+    "ts-node": "TS_NODE_PROJECT=tsconfig.json ts-node-script ./exp.ts",
+    "build": "npm run clean && tsc --project tsconfig.json",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "olive-data-contracts": "git+ssh://git@bitbucket.org/crosschx/olive-data-contracts.git#master",
