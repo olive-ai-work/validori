@@ -1,6 +1,6 @@
 {
   "name": "validori",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Idk what this is, but its a validation thing so.",
   "main": "dist/index.js",
   "scripts": {
