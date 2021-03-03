@@ -35,8 +35,12 @@ function setRequestTypeDescription (odc: AuthStatusRequest): [AuthStatusRequest,
 
   return [odc, type]
 }
-
-// TODO: Make it so the errors collect into an array instead of stopping at the first error found
+/**
+ * Runs a list of rules provided against the ODC, if any of the checks fails
+ * the error is marked and added to an array and returned
+ * @param rules The Map which contains the rules you want to run against the odc
+ * @param odc The ODC we are validating
+ */
 function validateRules (rules: PredMap, odc: AuthStatusRequest): GlobalError[] {
   const errorBuilder: OliveErrorCollection = OliveErrorCollection.createNewCollection()
   const errs = []
@@ -50,8 +54,10 @@ function validateRules (rules: PredMap, odc: AuthStatusRequest): GlobalError[] {
   return errs
 }
 
-// TODO: Keep going if we run into an error even at always
-// TODO: replace any with ODC type once we finish testing
+/**
+ * The beefy parts of running validori, simply pass your odc to this function and you're golden
+ * @param odc The ODC object we want to validate
+ */
 function validori (odc: ODC): ValidResponse {
   const data = getData(odc)
   const results = validateRules(rules.always, data)
