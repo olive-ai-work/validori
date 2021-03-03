@@ -8,6 +8,24 @@ Play with the rules to determine if things are okay for you
 
 - `odc`: An `AuthStatusRequest` or `AuthStatusMimicRequest`
 
+## Usage
+
+So for now until this lives somewhere else you can do the following:
+
+- Clone this repo
+- `cd` into the cloned folder
+- Run `npm i` (make sure you're on vpn so that the olive data contract can install)
+- `import` this function into the code you're validating
+
+Using the API is easy:
+```js
+import validori from './where/you/cloned/validori'
+
+validori(someODC)
+```
+
+Done!
+
 ## Rules
 
 These are the specific rules for validation
