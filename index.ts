@@ -1,12 +1,12 @@
 import {
-  AuthStatusResponse,
-  AuthStatusRequest,
   AuthStatusMimicRequest,
+  AuthStatusRequest,
+  AuthStatusResponse,
+  createError,
   ErrorCodes,
-  OliveErrorCollection,
   GlobalError
 } from 'olive-data-contracts'
-import * as rules from './rules/index'
+import * as rules from './rules'
 
 export type ODC = AuthStatusRequest | AuthStatusMimicRequest
 export type ValidResponse = AuthStatusRequest | AuthStatusResponse
@@ -42,12 +42,11 @@ function setRequestTypeDescription (odc: AuthStatusRequest): [AuthStatusRequest,
  * @param odc The ODC we are validating
  */
 function validateRules (rules: PredMap, odc: AuthStatusRequest): GlobalError[] {
-  const errorBuilder: OliveErrorCollection = OliveErrorCollection.createNewCollection()
   const errs = []
 
   for (const [msg, fn] of rules) {
     if (!fn(odc)) {
-      errs.push(errorBuilder.createError(msg))
+      errs.push(createError(msg))
     }
   }
 
